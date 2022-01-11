@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useState,useEffect } from 'react';
 import './App.css';
+import SocialCard from './SocialCard';
 
 function App() {
+    const [user,SetUser]=useState([])
+
+    useEffect (()=>{
+     (async()=>{
+       let userData;
+       try{
+         const response = await fetch("https://randomuser.me/api/?results=10")
+           userData =(await response.json()).results
+       } catch (error){
+          console.log(error)
+          userData=[];
+       }
+       SetUser(userData)
+     }) ()
+
+    },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     {user.map((user,index)=>(
+       <SocialCard userData={user} key={index}/>
+
+  
+     ))}
+     
     </div>
   );
 }
