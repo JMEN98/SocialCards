@@ -1,10 +1,11 @@
 import './PhoneNumber.css'
-const PhoneNumber = ({number,type}) =>{
+const Phone = ({number,type}) =>{
+  return(
   <div className="PhoneNumber">
     <p> {type}: {number}</p>
 
   </div>
-
+  )
 }
 
-export default PhoneNumber
+export default Phone
