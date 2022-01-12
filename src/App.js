@@ -10,7 +10,7 @@ function App() {
     (async () => {
       let userData;
       try {
-        const response = await fetch("https://randomuser.me/api/?results=20");
+        const response = await fetch("https://randomuser.me/api/?results=28");
         userData = (await response.json()).results;
       } catch (error) {
         console.log(error);
